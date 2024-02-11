@@ -1,9 +1,16 @@
 const express = require("express");
 const app = express();
 
+// Додати проміжне ПЗ перед викликом статики
+app.use((req, res, next) => {
+  console.log("Наше проміжне ПЗ");
+  next();
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
 app.get("/contact", (req, res) => {
   res.send("<h1>Contact page</h1>");
 });
